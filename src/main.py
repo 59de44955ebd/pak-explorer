@@ -39,6 +39,7 @@ HCURSOR_WAIT = user32.LoadCursorW(None, IDC_WAIT)
 LISTBOX_WIDTH = 140
 BLOCK_WIDTH = 16
 MAX_BLOCKS = 400
+KNOWN_EXTENSIONS = '.jpg', '.png', '.webp', '.woff'
 
 
 ########################################
@@ -139,6 +140,8 @@ class App(MainWin):
 
         self.register_message_callback(WM_SIZE, _on_WM_SIZE)
 
+        self.show()
+
         ########################################
         #
         ########################################
@@ -178,7 +181,8 @@ class App(MainWin):
                     buf = create_unicode_buffer(MAX_PATH)
                     user32.SendMessageW(self.listbox.hwnd, LB_GETTEXT, idx, buf)
                     chunk_name = buf.value
-                    if chunk_name.lower().endswith('.png'):
+                    ext = os.path.splitext(chunk_name)[1].lower()
+                    if ext in KNOWN_EXTENSIONS:
                         exec_info = SHELLEXECUTEINFOW()
                         exec_info.nShow = SW_SHOWNORMAL
                         exec_info.lpFile = os.path.join(self.tmp_dir, chunk_name)
@@ -205,8 +209,6 @@ class App(MainWin):
                 self.load_pak_file(dropped_items[0])
 
         self.register_message_callback(WM_DROPFILES, _on_WM_DROPFILES)
-
-        self.show()
 
         shell32.DragAcceptFiles(self.hwnd, TRUE)
 
@@ -247,7 +249,7 @@ class App(MainWin):
             out, err, exit_code = run_command(command)
 
         if exit_code != 0:
-            user32.SetWindowTextW(self.statusbar.hwnd, out.decode())
+            user32.SetWindowTextW(self.statusbar.hwnd, '  ' + out.decode())
             return
 
         user32.SendMessageW(self.listbox.hwnd, WM_SETREDRAW, FALSE, 0)
@@ -314,7 +316,7 @@ class App(MainWin):
 #        print(out, err, exit_code)
 
         user32.SetCursor(HCURSOR_ARROW)
-        user32.SetWindowTextW(self.statusbar.hwnd, out.decode() if exit_code != 0 else '')
+        user32.SetWindowTextW(self.statusbar.hwnd, '  ' + out.decode() if exit_code != 0 else '')
 
     ########################################
     #
