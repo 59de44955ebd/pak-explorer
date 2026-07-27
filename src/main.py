@@ -11,7 +11,7 @@ APP_DIR = os.path.dirname(__file__)
 IS_FROZEN = getattr(sys, 'frozen', False)
 
 if not IS_FROZEN:
-    # Force local import
+    # Force local imports
     sys.path.append(APP_DIR)
 
 from winapp.const import *
@@ -20,7 +20,6 @@ from winapp.controls.listbox import *
 from winapp.controls.statusbar import *
 from winapp.dialogs import *
 from winapp.dlls import *
-#from winapp.image_structs import *
 from winapp.mainwin import *
 
 from resources import *
@@ -40,7 +39,6 @@ HCURSOR_WAIT = user32.LoadCursorW(None, IDC_WAIT)
 LISTBOX_WIDTH = 140
 BLOCK_WIDTH = 16
 MAX_BLOCKS = 400
-MAX_DATA_SIZE_MB = 512
 
 
 ########################################
