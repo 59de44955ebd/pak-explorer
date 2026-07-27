@@ -10,6 +10,6 @@ When saving as new PAK file, all edited resources are compressed with the origin
 
 Double clicking a binary resource with a known extension (currently .avif, .jpg, .png, .webp and .woff) in the listbox on the left opens it with the default application associated whith that extension (e.g. IrfanView for image files).
 
-PAK Explorer is based on [chrome-pak-customizer](https://github.com/myfreeer/chrome-pak-customizer) (a customized version of 3.0-nightly-20251007).
+PAK Explorer is based on [chrome-pak-customizer](https://github.com/myfreeer/chrome-pak-customizer) (a [customized](rust/src/pak_file_type.rs) version of 3.0-nightly-20251007).
 
 ![](screenshots/pak-explorer-win11.png)
