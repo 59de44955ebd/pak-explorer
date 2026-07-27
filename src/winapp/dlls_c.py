@@ -1,0 +1,70 @@
+""" This is a "compiled" version containing only those dlls and functions that are actually used by the application """
+
+from ctypes.wintypes import *
+from .types import *
+
+comctl32 = ctypes.windll.comctl32
+comdlg32 = ctypes.windll.comdlg32
+gdi32 = ctypes.windll.gdi32
+kernel32 = ctypes.windll.kernel32
+shell32 = ctypes.windll.shell32
+user32 = ctypes.windll.user32
+
+comctl32.TaskDialog.argtypes = (HWND, HINSTANCE, LPCWSTR, LPCWSTR, LPCWSTR, DWORD, LPCWSTR, LPINT)
+comdlg32.GetOpenFileNameW.argtypes = (LPVOID,)
+comdlg32.GetSaveFileNameW.argtypes = (LPVOID,)
+gdi32.CreateFontW.argtypes = (INT, INT, INT, INT, INT, DWORD, DWORD, DWORD, DWORD, DWORD, DWORD, DWORD, DWORD, LPCWSTR)
+gdi32.CreateFontW.restype = HFONT
+gdi32.CreateSolidBrush.argtypes = (COLORREF,)
+gdi32.CreateSolidBrush.restype = HBRUSH
+gdi32.GetDeviceCaps.argtypes = (HDC, INT)
+kernel32.CloseHandle.argtypes = (HANDLE,)
+kernel32.CreatePipe.argtypes = (LPHANDLE, LPHANDLE, LPVOID, DWORD)
+kernel32.CreateProcessW.argtypes = (LPCWSTR, LPWSTR, LPVOID, LPVOID, BOOL, DWORD, LPVOID, LPCWSTR, LPVOID, LPVOID)
+kernel32.DuplicateHandle.argtypes = (HANDLE, HANDLE, HANDLE, LPHANDLE, DWORD, BOOL, DWORD)
+kernel32.GetCurrentProcess.restype = HANDLE
+kernel32.GetExitCodeProcess.argtypes = (HANDLE, LPDWORD)
+kernel32.GetModuleHandleW.argtypes = (LPCWSTR,)
+kernel32.GetModuleHandleW.restype = HMODULE
+kernel32.LoadLibraryW.restype = HANDLE
+kernel32.PeekNamedPipe.argtypes = (HANDLE, LPVOID, DWORD, LPDWORD, LPDWORD, LPDWORD)
+kernel32.ReadFile.argtypes = (HANDLE, LPVOID, DWORD, LPDWORD, LPVOID)
+shell32.DragAcceptFiles.argtypes = (HWND, BOOL)
+shell32.DragFinish.argtypes = (WPARAM,)
+shell32.DragQueryFileW.argtypes = (WPARAM, UINT, LPWSTR, UINT)
+shell32.ShellExecuteExW.argtypes = (LPVOID,)
+user32.CreateWindowExW.argtypes = (DWORD, LPCWSTR, LPCWSTR, DWORD, INT, INT, INT, INT, HWND, HMENU, HINSTANCE, LPVOID)
+user32.DefWindowProcW.argtypes = (HWND, UINT, WPARAM, LPARAM)
+user32.DestroyWindow.argtypes = (HWND,)
+user32.DispatchMessageW.argtypes = (LPMSG,)
+user32.GetClientRect.argtypes = (HWND, LPRECT)
+user32.GetDC.argtypes = (HWND,)
+user32.GetDC.restype = HDC
+user32.GetDesktopWindow.restype = HWND
+user32.GetMessageW.argtypes = (LPMSG,HWND,UINT,UINT)
+user32.GetWindowLongPtrA.argtypes = (HWND, LONG_PTR)
+user32.GetWindowLongPtrA.restype = ULONG
+user32.GetWindowRect.argtypes = (HWND, LPRECT)
+user32.GetWindowTextW.argtypes = (HWND, LPWSTR, INT)
+user32.LoadAcceleratorsW.argtypes = (HINSTANCE, LPCWSTR)
+user32.LoadAcceleratorsW.restype = HACCEL
+user32.LoadCursorW.argtypes = (HINSTANCE, LPVOID)
+user32.LoadIconW.argtypes = (HINSTANCE, LPCWSTR)
+user32.LoadIconW.restype = HICON
+user32.LoadMenuW.argtypes = (HINSTANCE, LPCWSTR)
+user32.LoadMenuW.restype = HMENU
+user32.MapWindowPoints.argtypes = (HWND, HWND, LPVOID, UINT)
+user32.MessageBoxW.argtypes = (HWND, LPCWSTR, LPCWSTR, UINT)
+user32.ReleaseDC.argtypes = (HWND, HANDLE)
+user32.SendMessageW.argtypes = (HWND, UINT, LPVOID, LPVOID)
+user32.SendMessageW.restype = LONG_PTR
+user32.SetLayeredWindowAttributes.argtypes = (HWND, COLORREF, BYTE, DWORD)
+user32.SetParent.argtypes = (HWND, HWND)
+user32.SetWindowLongPtrA.argtypes = (HWND, LONG_PTR, ULONG)
+user32.SetWindowLongPtrA.restype = LONG
+user32.SetWindowLongPtrW.argtypes = (HWND, LONG_PTR, WNDPROC)
+user32.SetWindowLongPtrW.restype = WNDPROC
+user32.SetWindowPos.argtypes = (HWND, LONG_PTR, INT, INT, INT, INT, UINT)
+user32.TrackPopupMenuEx.argtypes = (HANDLE, UINT, INT, INT, HANDLE, LPVOID)
+user32.TranslateAcceleratorW.argtypes = (HWND, HACCEL, LPMSG)
+user32.TranslateMessage.argtypes = (LPMSG,)

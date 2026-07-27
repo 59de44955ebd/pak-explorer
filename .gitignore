@@ -1,0 +1,9 @@
+/stuff/
+/releases/
+/build/
+/dist/
+/*.spec
+/PAKExplorer.exe
+/PAKExplorer.ini
+/test_files/
+_backup.rar
