@@ -39,7 +39,7 @@ HCURSOR_WAIT = user32.LoadCursorW(None, IDC_WAIT)
 LISTBOX_WIDTH = 140
 BLOCK_WIDTH = 16
 MAX_BLOCKS = 400
-KNOWN_EXTENSIONS = '.jpg', '.png', '.webp', '.woff'
+KNOWN_EXTENSIONS = ('.avif', '.jpg', '.png', '.webp', '.woff')
 
 
 ########################################
@@ -103,8 +103,7 @@ class App(MainWin):
                 exec_info = SHELLEXECUTEINFOW()
                 exec_info.nShow = SW_SHOWNORMAL
                 exec_info.lpFile = 'explorer.exe'
-                exec_info.lpParameters = f'/select,"{buf.value}"'
-                exec_info.lpDirectory = self.tmp_dir
+                exec_info.lpParameters = f'/select,"{os.path.join(self.tmp_dir, buf.value)}"'
                 shell32.ShellExecuteExW(byref(exec_info))
 
         self.listbox.register_message_callback(WM_CONTEXTMENU, _on_WM_CONTEXTMENU)

@@ -8,7 +8,7 @@ All resources in the PAK file are displayed in a listbox on the left. When selec
 
 When saving as new PAK file, all edited resources are compressed with the original compression (Brotli, GZIP or None).
 
-Double clicking a binary resource with a known extension (currently .jpg, .png, .webp and .woff) in the listbox on the left opens it with the default application associated whith that extension (e.g. IrfanView for image files).
+Double clicking a binary resource with a known extension (currently .avif, .jpg, .png, .webp and .woff) in the listbox on the left opens it with the default application associated whith that extension (e.g. IrfanView for image files).
 
 PAK Explorer is based on [chrome-pak-customizer](https://github.com/myfreeer/chrome-pak-customizer) (a customized version of 3.0-nightly-20251007).
 
