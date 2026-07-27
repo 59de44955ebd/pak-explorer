@@ -6,7 +6,7 @@ import sys
 import traceback
 
 APP_NAME = 'PAK Explorer'
-APP_VERSION = '0.1'
+APP_VERSION = '0.2'
 APP_DIR = os.path.dirname(__file__)
 IS_FROZEN = getattr(sys, 'frozen', False)
 
@@ -233,9 +233,8 @@ class App(MainWin):
         user32.SetWindowTextW(self.statusbar.hwnd, '  Loading PAK file...')
         user32.SetCursor(HCURSOR_WAIT)
 
-        if self.tmp_dir:
+        if self.tmp_dir and os.path.isdir(self.tmp_dir):
             shutil.rmtree(self.tmp_dir)
-
         self.tmp_dir = os.path.join(APP_DIR, 'tmp')
 
         self.is_edge = False
@@ -392,10 +391,13 @@ class App(MainWin):
     #
     ########################################
     def quit(self, *_):
-        if self.tmp_dir:
+        if self.tmp_dir and os.path.isdir(self.tmp_dir):
             user32.SetWindowTextW(self.statusbar.hwnd, '  Clearing temporary files...')
             user32.SetCursor(HCURSOR_WAIT)
-            shutil.rmtree(self.tmp_dir)
+            try:
+                shutil.rmtree(self.tmp_dir)
+            except:
+                pass
         super().quit()
 
 
