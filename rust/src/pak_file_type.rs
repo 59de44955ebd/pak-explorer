@@ -133,17 +133,6 @@ pub static PAK_FILE_TYPES: [PakFileType; 19] = [
         compression: PakFileCompression::None,
         offset: 0,
     },
-//    PakFileType {
-//        ext_name: ".png",
-//        identifier: &[0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A],
-//        compression: PakFileCompression::None,
-//    },
-//    PakFileType {
-//        ext_name: ".webp",
-//        identifier: "RIFF".as_bytes(),
-//        compression: PakFileCompression::None,
-//        offset: 0,
-//    },
     PakFileType {
         ext_name: ".webp",
         identifier: "WEBP".as_bytes(),
