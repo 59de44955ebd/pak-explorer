@@ -1,3 +1,7 @@
+# [Archived]
+**This repository is archived, there is a new tool called [PakEdit](https://github.com/59de44955ebd/PakEdit) that is faster and has more features. 
+Instead of using an external binary, in PakEdit .pak file loading/parsing/saving is implemented in pure Python code.**
+
 # PAK Explorer
 
 PAK Explorer is a simple portable tool for Windows that allows to explore Chrome/Chromium/Edge/WebView2 resource PAK files and edit text resources like e.g. JS code, CSS files etc.
